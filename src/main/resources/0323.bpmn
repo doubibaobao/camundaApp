@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0yib7qu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0">
+  <bpmn:process id="Process_18dgr5c" name="测试流程" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0musyi4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0musyi4" sourceRef="StartEvent_1" targetRef="Task_14v7n74" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ab6lco" sourceRef="Task_14v7n74" targetRef="Task_0ygrm21" />
+    <bpmn:userTask id="Task_0ygrm21" name="经理审批" camunda:assignee="lisi">
+      <bpmn:incoming>SequenceFlow_0ab6lco</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ztt9l6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0ehmx17" name="总经理审批" camunda:assignee="wangwu">
+      <bpmn:incoming>SequenceFlow_0ztt9l6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ciukla</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0ztt9l6" sourceRef="Task_0ygrm21" targetRef="Task_0ehmx17" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ciukla" sourceRef="Task_0ehmx17" targetRef="Task_12s9f55" />
+    <bpmn:endEvent id="EndEvent_0iwab3m">
+      <bpmn:incoming>SequenceFlow_077vhct</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Task_14v7n74" name="创建请假单" camunda:assignee="kermit">
+      <bpmn:incoming>SequenceFlow_0musyi4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ab6lco</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_12s9f55" name="财务审批" camunda:assignee="xiaoming">
+      <bpmn:incoming>SequenceFlow_0ciukla</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_077vhct</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_077vhct" sourceRef="Task_12s9f55" targetRef="EndEvent_0iwab3m" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_18dgr5c">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="188" y="78" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0musyi4_di" bpmnElement="SequenceFlow_0musyi4">
+        <di:waypoint x="206" y="114" />
+        <di:waypoint x="206" y="166" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ab6lco_di" bpmnElement="SequenceFlow_0ab6lco">
+        <di:waypoint x="206" y="246" />
+        <di:waypoint x="206" y="292" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1exkk8f_di" bpmnElement="Task_0ygrm21">
+        <dc:Bounds x="156" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0h4mmc5_di" bpmnElement="Task_0ehmx17">
+        <dc:Bounds x="156" y="420" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ztt9l6_di" bpmnElement="SequenceFlow_0ztt9l6">
+        <di:waypoint x="206" y="372" />
+        <di:waypoint x="206" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ciukla_di" bpmnElement="SequenceFlow_0ciukla">
+        <di:waypoint x="206" y="500" />
+        <di:waypoint x="206" y="542" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0iwab3m_di" bpmnElement="EndEvent_0iwab3m">
+        <dc:Bounds x="188" y="689" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1fxghfu_di" bpmnElement="Task_14v7n74">
+        <dc:Bounds x="156" y="166" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0sua8oi_di" bpmnElement="Task_12s9f55">
+        <dc:Bounds x="156" y="542" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_077vhct_di" bpmnElement="SequenceFlow_077vhct">
+        <di:waypoint x="206" y="622" />
+        <di:waypoint x="206" y="689" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
